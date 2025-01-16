@@ -57,7 +57,7 @@ export default function Hero() {
               </Button>
               <Button variant="glow" size="lg" asChild>
                 <a href={siteConfig.links.github}>
-                  <Github className="mr-2 h-4 w-4" /> Github
+                  <Github className="me-2 h-4 w-4" /> Github
                 </a>
               </Button>
             </div>
