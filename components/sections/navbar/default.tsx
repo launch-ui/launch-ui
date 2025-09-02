@@ -1,136 +1,50 @@
-import { Menu } from "lucide-react";
-import { ReactNode } from "react";
+import Image from "next/image";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import LaunchUI from "../../logos/launch-ui";
-import { Button, type ButtonProps } from "../../ui/button";
 import {
   Navbar as NavbarComponent,
   NavbarLeft,
   NavbarRight,
 } from "../../ui/navbar";
-import Navigation from "../../ui/navigation";
-import { Sheet, SheetContent, SheetTrigger } from "../../ui/sheet";
-
-interface NavbarLink {
-  text: string;
-  href: string;
-}
-
-interface NavbarActionProps {
-  text: string;
-  href: string;
-  variant?: ButtonProps["variant"];
-  icon?: ReactNode;
-  iconRight?: ReactNode;
-  isButton?: boolean;
-}
+import { WaitlistModal } from "../../waitlist-modal";
 
 interface NavbarProps {
-  logo?: ReactNode;
-  name?: string;
-  homeUrl?: string;
-  mobileLinks?: NavbarLink[];
-  actions?: NavbarActionProps[];
-  showNavigation?: boolean;
-  customNavigation?: ReactNode;
   className?: string;
 }
 
-export default function Navbar({
-  logo = <LaunchUI />,
-  name = "Launch UI",
-  homeUrl = siteConfig.url,
-  mobileLinks = [
-    { text: "Getting Started", href: siteConfig.url },
-    { text: "Components", href: siteConfig.url },
-    { text: "Documentation", href: siteConfig.url },
-  ],
-  actions = [
-    { text: "Sign in", href: siteConfig.url, isButton: false },
-    {
-      text: "Get Started",
-      href: siteConfig.url,
-      isButton: true,
-      variant: "default",
-    },
-  ],
-  showNavigation = true,
-  customNavigation,
-  className,
-}: NavbarProps) {
+export default function Navbar({ className }: NavbarProps) {
   return (
-    <header className={cn("sticky top-0 z-50 -mb-4 px-4 pb-4", className)}>
-      <div className="fade-bottom bg-background/15 absolute left-0 h-24 w-full backdrop-blur-lg"></div>
+    <header
+      className={cn("fixed top-0 right-0 left-0 z-50 px-4 pb-4", className)}
+    >
+      <div className="fade-bottom bg-background/5 absolute left-0 h-24 w-full backdrop-blur-md"></div>
       <div className="max-w-container relative mx-auto">
         <NavbarComponent>
           <NavbarLeft>
-            <a
-              href={homeUrl}
-              className="flex items-center gap-2 text-xl font-bold"
-            >
-              {logo}
-              {name}
+            <a href={siteConfig.url} className="flex items-center gap-3">
+              <Image
+                src="/vibe_hero_logo_for_light_bg.png"
+                alt="Vibe Hero"
+                width={120}
+                height={40}
+                className="max-h-4 w-auto dark:hidden"
+              />
+              <Image
+                src="/vibe_hero_logo_for_dark_bg.png"
+                alt="Vibe Hero"
+                width={120}
+                height={40}
+                className="hidden max-h-4 w-auto dark:block"
+              />
             </a>
-            {showNavigation && (customNavigation || <Navigation />)}
           </NavbarLeft>
           <NavbarRight>
-            {actions.map((action, index) =>
-              action.isButton ? (
-                <Button
-                  key={index}
-                  variant={action.variant || "default"}
-                  asChild
-                >
-                  <a href={action.href}>
-                    {action.icon}
-                    {action.text}
-                    {action.iconRight}
-                  </a>
-                </Button>
-              ) : (
-                <a
-                  key={index}
-                  href={action.href}
-                  className="hidden text-sm md:block"
-                >
-                  {action.text}
-                </a>
-              ),
-            )}
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="shrink-0 md:hidden"
-                >
-                  <Menu className="size-5" />
-                  <span className="sr-only">Toggle navigation menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right">
-                <nav className="grid gap-6 text-lg font-medium">
-                  <a
-                    href={homeUrl}
-                    className="flex items-center gap-2 text-xl font-bold"
-                  >
-                    <span>{name}</span>
-                  </a>
-                  {mobileLinks.map((link, index) => (
-                    <a
-                      key={index}
-                      href={link.href}
-                      className="text-muted-foreground hover:text-foreground"
-                    >
-                      {link.text}
-                    </a>
-                  ))}
-                </nav>
-              </SheetContent>
-            </Sheet>
+            <WaitlistModal
+              triggerText="Dołącz do waitlisty"
+              className="!w-auto text-white"
+            />
           </NavbarRight>
         </NavbarComponent>
       </div>

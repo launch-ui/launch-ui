@@ -1,31 +1,27 @@
 export const siteConfig = {
-  name: "Launch UI",
-  url: "https://launchuicomponents.com",
-  getStartedUrl:
-    "https://launchuicomponents.com/docs/getting-started/introduction",
-  ogImage: "https://launchuicomponents.com/og.jpg",
+  name: "Vibe Hero Sprint",
+  title: "Zbuduj i przetestuj produkt w 2 tygodnie | Vibe Hero Sprint",
+  url: "https://vibehero.pl",
+  getStartedUrl: "https://easl.ink/oZKMH",
+  ogImage: "https://vibehero.pl/og.jpg",
   description:
-    "Landing page components built with React, Shadcn/ui and Tailwind that will make your website feel premium.",
+    "Zbuduj działający produkt w 2 tygodnie. Intensywny sprint coding z live Q&A, codziennym cowrkingiem i prawdziwym feedbackiem od użytkowników. 23/50 miejsc zajętych.",
+  shortDescription:
+    "2-tygodniowy sprint tworzenia produktu z live wsparciem i społecznością",
   links: {
-    twitter: "https://twitter.com/mikolajdobrucki",
-    github: "https://github.com/launch-ui/launch-ui",
-    email: "mailto:contact@mikolajdobrucki.com",
+    twitter: "https://twitter.com/vibehero",
+    github: "https://github.com/vibehero",
+    email: "mailto:wozu@vibehero.pl",
   },
-  pricing: {
-    pro: "https://launchui.lemonsqueezy.com/buy/b4798c68-c858-4c34-860b-069b5a0d6c4e",
-    team: "https://launchui.lemonsqueezy.com/buy/130d8cfe-e123-464b-9f67-c74c5fedfb45",
+  cta: {
+    primary: "https://easl.ink/oZKMH",
   },
   stats: {
-    figma: 4352,
-    github: 1049,
-    cli: 8092,
-    total: "13.4k+",
-    updated: "23 Jul 2025",
-    sections: 72,
-    illustrations: 15,
-    animations: 14,
-    appTemplates: 2,
-    websiteTemplates: 4,
+    participants: 23,
+    target: 50,
+    previousSuccess: "10k zł w przedsprzedaży jednym postem na X",
+    duration: "2 tygodnie",
+    updated: "Styczeń 2025",
   },
 };
 

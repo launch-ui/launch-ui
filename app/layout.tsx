@@ -1,40 +1,56 @@
 import "@/app/globals.css";
+import "@/styles/convertkit.css";
 
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 
 import { ThemeProvider } from "@/components/contexts/theme-provider";
+import StructuredData from "@/components/seo/structured-data";
 import { inter } from "@/lib/fonts";
 
 import { siteConfig } from "../config/site";
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
   },
-  metadataBase: new URL(siteConfig.getStartedUrl),
+  metadataBase: new URL(siteConfig.url),
   description: siteConfig.description,
   keywords: [
-    "Landing page template",
-    "Components",
-    "Shadcn",
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "Radix UI",
+    "vibe coding sprint",
+    "zbuduj produkt w 2 tygodnie",
+    "mvp development",
+    "coding bootcamp",
+    "product development sprint",
+    "live coding",
+    "coworking online",
+    "feedback użytkowników",
+    "testowanie produktu",
+    "startup development",
+    "no-code coding",
+    "rapid prototyping",
+    "vibe hero",
+    "wozu coding",
+    "społeczność developerów",
+    "polski coding sprint",
   ],
   authors: [
     {
-      name: "Mikolaj Dobrucki",
-      url: "https://mikolajdobrucki.com",
+      name: "wozu",
+      url: "https://vibehero.pl",
+    },
+    {
+      name: "Vibe Hero",
+      url: "https://vibehero.pl",
     },
   ],
-  creator: "mikolajdobrucki",
+  creator: "wozu",
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: siteConfig.getStartedUrl,
-    title: siteConfig.name,
+    locale: "pl_PL",
+    url: siteConfig.url,
+    title: siteConfig.title,
     description: siteConfig.description,
     siteName: siteConfig.name,
     images: [
@@ -48,14 +64,29 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
+    title: siteConfig.title,
+    description: siteConfig.shortDescription,
     images: [siteConfig.ogImage],
-    creator: "@mikolajdobrucki",
+    creator: "@vibehero",
+    site: "@vibehero",
   },
   icons: {
     icon: "/favicon.svg",
     apple: "/apple-touch-icon.png",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: siteConfig.url,
   },
 };
 
@@ -65,9 +96,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" style={{ colorScheme: "dark" }} className="dark">
-      <body className={`${inter.className} bg-background antialiased`}>
+    <html
+      lang="pl"
+      style={{ colorScheme: "dark" }}
+      className={`dark ${inter.variable}`}
+    >
+      <head>
+        {/* DNS prefetch for performance */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+      </head>
+      <body
+        className={`${inter.className} bg-background font-sans antialiased`}
+      >
+        <StructuredData />
         <ThemeProvider>{children}</ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

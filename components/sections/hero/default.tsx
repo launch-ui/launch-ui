@@ -1,128 +1,140 @@
-import { ArrowRightIcon } from "lucide-react";
+import {
+  PersonStandingIcon,
+  UserCheckIcon,
+  UserIcon,
+  UserPlusIcon,
+  UsersIcon,
+} from "lucide-react";
 import { ReactNode } from "react";
 
-import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import Github from "../../logos/github";
 import { Badge } from "../../ui/badge";
-import { Button, type ButtonProps } from "../../ui/button";
-import Glow from "../../ui/glow";
 import { Mockup, MockupFrame } from "../../ui/mockup";
-import Screenshot from "../../ui/screenshot";
 import { Section } from "../../ui/section";
-
-interface HeroButtonProps {
-  href: string;
-  text: string;
-  variant?: ButtonProps["variant"];
-  icon?: ReactNode;
-  iconRight?: ReactNode;
-}
+import { WaitlistModal } from "../../waitlist-modal";
 
 interface HeroProps {
-  title?: string;
   description?: string;
   mockup?: ReactNode | false;
   badge?: ReactNode | false;
-  buttons?: HeroButtonProps[] | false;
   className?: string;
 }
 
 export default function Hero({
-  title = "Give your big idea the design it deserves",
-  description = "Professionally designed blocks and templates built with React, Shadcn/ui and Tailwind that will help your product stand out.",
-  mockup = (
-    <Screenshot
-      srcLight="/dashboard-light.png"
-      srcDark="/dashboard-dark.png"
-      alt="Launch UI app screenshot"
-      width={1248}
-      height={765}
-      className="w-full"
-    />
-  ),
+  description = "Krótkie lekcje, live Q&A oraz codzienny coworking online.",
+  mockup = false,
   badge = (
-    <Badge variant="outline" className="animate-appear">
-      <span className="text-muted-foreground">
-        New version of Launch UI is out!
-      </span>
-      <a href={siteConfig.getStartedUrl} className="flex items-center gap-1">
-        Get started
-        <ArrowRightIcon className="size-3" />
-      </a>
+    <Badge
+      variant="secondary"
+      className="border-white/20 bg-white/10 text-white backdrop-blur-sm"
+    >
+      Vibe Coding Sprint
     </Badge>
   ),
-  buttons = [
-    {
-      href: siteConfig.getStartedUrl,
-      text: "Get Started",
-      variant: "default",
-    },
-    {
-      href: siteConfig.links.github,
-      text: "Github",
-      variant: "glow",
-      icon: <Github className="mr-2 size-4" />,
-    },
-  ],
   className,
 }: HeroProps) {
   return (
     <Section
       className={cn(
-        "fade-bottom overflow-hidden pb-0 sm:pb-0 md:pb-0",
+        "relative h-screen overflow-hidden bg-transparent pb-0 sm:pb-0 md:pb-0",
         className,
       )}
     >
-      <div className="max-w-container mx-auto flex flex-col gap-12 pt-16 sm:gap-24">
-        <div className="flex flex-col items-center gap-6 text-center sm:gap-12">
-          {badge !== false && badge}
-          <h1 className="animate-appear from-foreground to-foreground dark:to-muted-foreground relative z-10 inline-block bg-linear-to-r bg-clip-text text-4xl leading-tight font-semibold text-balance text-transparent drop-shadow-2xl sm:text-6xl sm:leading-tight md:text-8xl md:leading-tight">
-            {title}
-          </h1>
-          <p className="text-md animate-appear text-muted-foreground relative z-10 max-w-[740px] font-medium text-balance opacity-0 delay-100 sm:text-xl">
-            {description}
-          </p>
-          {buttons !== false && buttons.length > 0 && (
-            <div className="animate-appear relative z-10 flex justify-center gap-4 opacity-0 delay-300">
-              {buttons.map((button, index) => (
-                <Button
-                  key={index}
-                  variant={button.variant || "default"}
-                  size="lg"
-                  asChild
-                >
-                  <a href={button.href}>
-                    {button.icon}
-                    {button.text}
-                    {button.iconRight}
-                  </a>
-                </Button>
-              ))}
+      {/* WebGL background now handled at main level */}
+
+      {/* Dark overlay to improve text readability on mobile */}
+      <div className="absolute inset-0 z-5 bg-black/40 md:bg-black/0" />
+
+      {/* Content */}
+      <div className="max-w-container relative z-10 mx-auto flex h-full flex-col justify-start px-4 pt-[15vh] pb-[10vh] md:justify-center md:pt-16 md:pb-4">
+        <div className="grid items-center gap-8 md:gap-20 lg:grid-cols-2 lg:gap-24">
+          {/* Left Column - Text Content */}
+          <div className="flex flex-col gap-6 text-left md:gap-12 lg:text-left">
+            {/* Main Title with Badge - Hierarchy Level 1 */}
+            <div className="space-y-4">
+              {badge !== false && (
+                <div className="animate-appear opacity-0">{badge}</div>
+              )}
+
+              <h1>
+                <span className="block bg-gradient-to-r from-white to-white/90 bg-clip-text text-3xl leading-tight font-bold text-transparent sm:text-4xl lg:text-5xl">
+                  Zbuduj i przetestuj produkt w{" "}
+                  <span className="text-brand">2 tygodnie</span>
+                </span>
+              </h1>
+
+              {/* Program Description - Hierarchy Level 2 */}
+              <p className="max-w-xl text-lg leading-relaxed text-white/70 sm:text-xl">
+                {description}
+              </p>
             </div>
-          )}
-          {mockup !== false && (
-            <div className="relative w-full pt-12">
-              <MockupFrame
-                className="animate-appear opacity-0 delay-700"
-                size="small"
-              >
-                <Mockup
-                  type="responsive"
-                  className="bg-background/90 w-full rounded-xl border-0"
-                >
-                  {mockup}
-                </Mockup>
-              </MockupFrame>
-              <Glow
-                variant="top"
-                className="animate-appear-zoom opacity-0 delay-1000"
-              />
+
+            {/* CTA - Hierarchy Level 4 */}
+            <div className="animate-appear flex flex-col gap-4 opacity-0 delay-400">
+              <WaitlistModal triggerText="Dołącz do waitlisty" />
             </div>
-          )}
+
+            {/* Social Proof - Hierarchy Level 3 */}
+            <div className="animate-appear opacity-0 delay-500">
+              <div className="flex flex-col items-center gap-3 text-sm text-white/60 sm:flex-row sm:gap-4">
+                <div className="flex items-center -space-x-1">
+                  {[
+                    UserIcon,
+                    UsersIcon,
+                    UserCheckIcon,
+                    UserPlusIcon,
+                    PersonStandingIcon,
+                  ].map((Icon, i) => (
+                    <div
+                      key={i}
+                      className="flex h-6 w-6 items-center justify-center rounded-full border border-white/20 bg-gray-800 backdrop-blur-sm"
+                    >
+                      <Icon className="h-3 w-3 text-white" />
+                    </div>
+                  ))}
+                </div>
+                <span className="text-center font-medium sm:text-left">
+                  <span className="block sm:inline">
+                    20+ osób już na pokładzie
+                  </span>
+                  <span className="hidden sm:inline"> • </span>
+                  <span className="block sm:inline">
+                    dostęp do community od października
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Visual Space */}
+          <div className="hidden items-center justify-center lg:flex">
+            <div className="relative">
+              {/* Planet is rendered by WebGL background, this is just spacing */}
+              <div className="h-96 w-96 opacity-0">
+                {/* Invisible spacer for layout */}
+              </div>
+            </div>
+          </div>
         </div>
+
+        {/* Bottom Section - Additional Content */}
+        {mockup !== false && (
+          <div className="animate-appear mt-24 opacity-0 delay-700">
+            <MockupFrame size="small">
+              <Mockup
+                type="responsive"
+                className="bg-background/10 w-full rounded-xl border border-white/10 backdrop-blur-sm"
+              >
+                {mockup}
+              </Mockup>
+            </MockupFrame>
+          </div>
+        )}
       </div>
+
+      {/* Bottom fade */}
+      <div className="from-background/50 absolute right-0 bottom-0 left-0 z-5 h-32 bg-gradient-to-t to-transparent" />
     </Section>
   );
 }
