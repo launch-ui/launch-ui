@@ -1,3 +1,4 @@
+import { type VariantProps } from "class-variance-authority";
 import { Menu } from "lucide-react";
 import { ReactNode } from "react";
 
@@ -5,7 +6,7 @@ import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 import LaunchUI from "../../logos/launch-ui";
-import { Button, type ButtonProps } from "../../ui/button";
+import { Button, buttonVariants } from "../../ui/button";
 import {
   Navbar as NavbarComponent,
   NavbarLeft,
@@ -22,7 +23,7 @@ interface NavbarLink {
 interface NavbarActionProps {
   text: string;
   href: string;
-  variant?: ButtonProps["variant"];
+  variant?: VariantProps<typeof buttonVariants>["variant"];
   icon?: ReactNode;
   iconRight?: ReactNode;
   isButton?: boolean;

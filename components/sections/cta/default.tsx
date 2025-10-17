@@ -1,16 +1,17 @@
+import { type VariantProps } from "class-variance-authority";
 import { ReactNode } from "react";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import { Button, type ButtonProps } from "../../ui/button";
+import { Button, buttonVariants } from "../../ui/button";
 import Glow from "../../ui/glow";
 import { Section } from "../../ui/section";
 
 interface CTAButtonProps {
   href: string;
   text: string;
-  variant?: ButtonProps["variant"];
+  variant?: VariantProps<typeof buttonVariants>["variant"];
   icon?: ReactNode;
   iconRight?: ReactNode;
 }

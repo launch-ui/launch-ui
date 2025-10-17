@@ -1,3 +1,4 @@
+import { type VariantProps } from "class-variance-authority";
 import { ArrowRightIcon } from "lucide-react";
 import { ReactNode } from "react";
 
@@ -6,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 import Github from "../../logos/github";
 import { Badge } from "../../ui/badge";
-import { Button, type ButtonProps } from "../../ui/button";
+import { Button, buttonVariants } from "../../ui/button";
 import Glow from "../../ui/glow";
 import { Mockup, MockupFrame } from "../../ui/mockup";
 import Screenshot from "../../ui/screenshot";
@@ -15,7 +16,7 @@ import { Section } from "../../ui/section";
 interface HeroButtonProps {
   href: string;
   text: string;
-  variant?: ButtonProps["variant"];
+  variant?: VariantProps<typeof buttonVariants>["variant"];
   icon?: ReactNode;
   iconRight?: ReactNode;
 }
