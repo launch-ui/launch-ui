@@ -11,9 +11,9 @@ const beamVariants = cva(
         default:
           "after:bg-radial after:from-foreground/30 after:from-10% after:to-foreground/0 after:to-60%",
         brand:
-          "after:bg-radial after:from-brand/30 after:from-10% after:to-brand/0 after:to-60%",
+          "after:bg-radial after:from-brand/10 dark:after:from-brand/30 after:from-10% after:to-brand/0 after:to-60%",
         brandLight:
-          "after:bg-radial after:from-brand-foreground/30 after:from-10% after:to-brand-foreground/0 after:to-60%",
+          "after:bg-radial dark:after:from-brand-foreground/30 after:from-brand-foreground/10 after:from-10% after:to-brand-foreground/0 after:to-60%",
       },
     },
     defaultVariants: {
