@@ -60,6 +60,8 @@
   --shadow-2xl: 0 25px 50px -12px var(--shadow);
   --shadow-mockup: -12px 16px 48px var(--shadow-strong);
 
+  --line-width: 1px;
+
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-appear: appear 0.6s forwards ease-out;

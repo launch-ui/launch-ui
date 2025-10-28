@@ -58,3 +58,27 @@
 @utility fade-right-lg {
   mask-image: linear-gradient(to left, transparent 15%, black 100%);
 }
+
+@utility line-y {
+  @apply border-border dark:border-border/10;
+  border-width: 0 var(--line-width, 0);
+}
+
+@utility line-x {
+  @apply border-border dark:border-border/10;
+  border-width: var(--line-width, 0) 0;
+}
+
+@utility line-b {
+  @apply border-border dark:border-border/10;
+  border-width: 0 0 var(--line-width, 0);
+}
+
+@utility line-t {
+  @apply border-border dark:border-border/10;
+  border-width: var(--line-width, 0) 0;
+}
+
+@utility line-dashed {
+  @apply border-dashed;
+}

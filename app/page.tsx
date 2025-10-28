@@ -7,10 +7,12 @@ import Logos from "../components/sections/logos/default";
 import Navbar from "../components/sections/navbar/default";
 import Pricing from "../components/sections/pricing/default";
 import Stats from "../components/sections/stats/default";
+import { LayoutLines } from "../components/ui/layout-lines";
 
 export default function Home() {
   return (
-    <main className="min-h-screen w-full overflow-hidden bg-background text-foreground">
+    <main className="bg-background text-foreground min-h-screen w-full">
+      <LayoutLines />
       <Navbar />
       <Hero />
       <Logos />
