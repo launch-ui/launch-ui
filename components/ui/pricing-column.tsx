@@ -5,8 +5,8 @@ import { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
-import { Button } from "./button";
 import { Badge } from "./badge";
+import { Button } from "./button";
 
 const pricingColumnVariants = cva(
   "max-w-container relative flex flex-col gap-6 overflow-hidden rounded-2xl p-8 shadow-xl",
