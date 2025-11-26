@@ -16,16 +16,15 @@ export const siteConfig = {
     team: "https://launchui.lemonsqueezy.com/buy/130d8cfe-e123-464b-9f67-c74c5fedfb45",
   },
   stats: {
-    figma: 6124,
-    github: 1553,
-    cli: 13228,
-    total: "20.9k+",
-    updated: "28 Oct 2025",
-    sections: 72,
+    figma: 6949,
+    github: 1701,
+    cli: 15972,
+    total: "24.6k+",
+    updated: "26 Nov 2025",
+    sections: 74,
     illustrations: 23,
     animations: 15,
-    appTemplates: 2,
-    websiteTemplates: 5,
+    templates: 7,
   },
 };
 
