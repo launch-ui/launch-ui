@@ -6,6 +6,7 @@ import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 import { Button } from "./button";
+import { Badge } from "./badge";
 
 const pricingColumnVariants = cva(
   "max-w-container relative flex flex-col gap-6 overflow-hidden rounded-2xl p-8 shadow-xl",
@@ -31,6 +32,9 @@ export interface PricingColumnProps
   icon?: ReactNode;
   description: string;
   price: number;
+  showDiscounts?: boolean;
+  originalPrice?: number;
+  discountCode?: string;
   priceNote: string;
   cta: {
     variant: "glow" | "default";
@@ -45,6 +49,9 @@ export function PricingColumn({
   icon,
   description,
   price,
+  showDiscounts = false,
+  originalPrice,
+  discountCode,
   priceNote,
   cta,
   features,
@@ -52,6 +59,11 @@ export function PricingColumn({
   className,
   ...props
 }: PricingColumnProps) {
+  const discountPercentage =
+    originalPrice && price
+      ? Math.round(((originalPrice - price) / originalPrice) * 100)
+      : 0;
+
   return (
     <div
       className={cn(pricingColumnVariants({ variant, className }))}
@@ -64,7 +76,7 @@ export function PricingColumn({
         )}
       />
       <div className="flex flex-col gap-7">
-        <div className="flex flex-col gap-2">
+        <header className="flex flex-col gap-2">
           <h2 className="flex items-center gap-2 font-bold">
             {icon && (
               <div className="text-muted-foreground flex items-center gap-2">
@@ -76,23 +88,48 @@ export function PricingColumn({
           <p className="text-muted-foreground max-w-[220px] text-sm">
             {description}
           </p>
-        </div>
-        <div className="flex items-center gap-3 lg:flex-col lg:items-start xl:flex-row xl:items-center">
-          <div className="flex items-baseline gap-1">
-            <span className="text-muted-foreground text-2xl font-bold">$</span>
-            <span className="text-6xl font-bold">{price}</span>
-          </div>
-          <div className="flex min-h-[40px] flex-col">
-            {price > 0 && (
-              <>
-                <span className="text-sm">one-time payment</span>
-                <span className="text-muted-foreground text-sm">
-                  plus local taxes
+        </header>
+        <section className="flex flex-col gap-3">
+          {showDiscounts && (
+            <div className="flex h-6 items-baseline gap-1">
+              {originalPrice && (
+                <span className="text-muted-foreground text-lg font-medium line-through">
+                  ${originalPrice}
                 </span>
-              </>
-            )}
+              )}
+            </div>
+          )}
+          <div className="flex items-center gap-3 lg:flex-col lg:items-start xl:flex-row xl:items-center">
+            <div className="flex flex-col gap-1">
+              <div className="flex items-baseline gap-1">
+                <span className="text-muted-foreground text-2xl font-bold">
+                  $
+                </span>
+                <span className="text-6xl font-bold">{price}</span>
+              </div>
+            </div>
+            <div className="flex min-h-[40px] flex-col">
+              {price > 0 && (
+                <>
+                  <span className="text-sm">one-time payment</span>
+                  <span className="text-muted-foreground text-sm">
+                    plus local taxes
+                  </span>
+                </>
+              )}
+            </div>
           </div>
-        </div>
+          {showDiscounts && (
+            <div className="h-6">
+              {discountCode && (
+                <p className="text-brand-foreground text-sm font-medium">
+                  {discountPercentage}% off with code{" "}
+                  <Badge variant="brand-secondary">{discountCode}</Badge>
+                </p>
+              )}
+            </div>
+          )}
+        </section>
         <Button variant={cta.variant} size="lg" asChild>
           <Link href={cta.href}>{cta.label}</Link>
         </Button>
