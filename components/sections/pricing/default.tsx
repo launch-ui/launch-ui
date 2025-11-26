@@ -39,7 +39,7 @@ export default function Pricing({
       name: "Pro",
       icon: <User className="size-4" />,
       description: "For early-stage founders, solopreneurs and indie devs",
-      price: 99,
+      price: 149,
       priceNote: "Lifetime access. Free updates. No recurring fees.",
       cta: {
         variant: "default",
@@ -47,8 +47,7 @@ export default function Pricing({
         href: siteConfig.pricing.pro,
       },
       features: [
-        `${siteConfig.stats.websiteTemplates} website templates`,
-        `${siteConfig.stats.appTemplates} app templates`,
+        `${siteConfig.stats.templates} templates`,
         `${siteConfig.stats.sections} blocks and sections`,
         `${siteConfig.stats.illustrations} illustrations`,
         `${siteConfig.stats.animations} custom animations`,
@@ -59,7 +58,7 @@ export default function Pricing({
       name: "Pro Team",
       icon: <Users className="size-4" />,
       description: "For teams and agencies working on cool products together",
-      price: 499,
+      price: 749,
       priceNote: "Lifetime access. Free updates. No recurring fees.",
       cta: {
         variant: "default",
