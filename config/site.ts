@@ -20,7 +20,7 @@ export const siteConfig = {
     github: 1701,
     cli: 15972,
     total: "24.6k+",
-    updated: "26 Nov 2025",
+    updated: "4 Dec 2025",
     sections: 74,
     illustrations: 23,
     animations: 15,
