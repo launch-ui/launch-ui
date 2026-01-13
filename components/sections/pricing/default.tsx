@@ -21,7 +21,7 @@ export default function Pricing({
       name: "Free",
       description: "For everyone starting out on a website for their big idea",
       price: 0,
-      priceNote: "Free and open-source forever.",
+      priceNote: "Free and open-source forever. Get started now.",
       cta: {
         variant: "glow",
         label: "Get started for free",
@@ -99,6 +99,8 @@ export default function Pricing({
                 icon={plan.icon}
                 description={plan.description}
                 price={plan.price}
+                originalPrice={plan.originalPrice}
+                promotionText={plan.promotionText}
                 priceNote={plan.priceNote}
                 cta={plan.cta}
                 features={plan.features}
