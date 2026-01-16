@@ -38,10 +38,10 @@ export default function Logos({
       key="shadcn"
       image={ShadcnUi}
       name="Shadcn/ui"
-      version="3.5.1"
+      version="3.6.3"
       badge="New"
     />,
-    <Logo key="tailwind" image={Tailwind} name="Tailwind" version="4.1.14" />,
+    <Logo key="tailwind" image={Tailwind} name="Tailwind" version="4.1.18" />,
   ],
   className,
 }: LogosProps) {

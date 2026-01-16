@@ -5,7 +5,6 @@ import { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
-import { Badge } from "./badge";
 import { Button } from "./button";
 
 const pricingColumnVariants = cva(
@@ -32,9 +31,8 @@ export interface PricingColumnProps
   icon?: ReactNode;
   description: string;
   price: number;
-  showDiscounts?: boolean;
   originalPrice?: number;
-  discountCode?: string;
+  promotionText?: ReactNode;
   priceNote: string;
   cta: {
     variant: "glow" | "default";
@@ -49,9 +47,8 @@ export function PricingColumn({
   icon,
   description,
   price,
-  showDiscounts = false,
   originalPrice,
-  discountCode,
+  promotionText,
   priceNote,
   cta,
   features,
@@ -59,11 +56,6 @@ export function PricingColumn({
   className,
   ...props
 }: PricingColumnProps) {
-  const discountPercentage =
-    originalPrice && price
-      ? Math.round(((originalPrice - price) / originalPrice) * 100)
-      : 0;
-
   return (
     <div
       className={cn(pricingColumnVariants({ variant, className }))}
@@ -90,13 +82,13 @@ export function PricingColumn({
           </p>
         </header>
         <section className="flex flex-col gap-3">
-          {showDiscounts && (
+          {originalPrice !== undefined && (
             <div className="flex h-6 items-baseline gap-1">
-              {originalPrice && (
-                <span className="text-muted-foreground text-lg font-medium line-through">
-                  ${originalPrice}
-                </span>
-              )}
+              <span className="text-muted-foreground text-lg font-medium line-through">
+                {originalPrice > 0 && price !== originalPrice
+                  ? `$${originalPrice}`
+                  : ""}
+              </span>
             </div>
           )}
           <div className="flex items-center gap-3 lg:flex-col lg:items-start xl:flex-row xl:items-center">
@@ -119,14 +111,9 @@ export function PricingColumn({
               )}
             </div>
           </div>
-          {showDiscounts && (
-            <div className="h-6">
-              {discountCode && (
-                <p className="text-brand-foreground text-sm font-medium">
-                  {discountPercentage}% off with code{" "}
-                  <Badge variant="brand-secondary">{discountCode}</Badge>
-                </p>
-              )}
+          {promotionText && (
+            <div className="text-brand-foreground h-6 text-sm font-medium">
+              {promotionText}
             </div>
           )}
         </section>
