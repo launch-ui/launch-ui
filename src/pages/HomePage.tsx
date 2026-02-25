@@ -22,7 +22,7 @@ export default function HomePage() {
         url="https://vibehero.pl"
       />
       <Navbar1 showPromoBanner />
-      <main className="bg-white pt-[120px] text-black sm:pt-[108px] md:pt-[116px]">
+      <main className="bg-white pt-[132px] text-black sm:pt-[118px] md:pt-[118px]">
         <Header1 />
         <Pricing10 />
         <SolutionSection />

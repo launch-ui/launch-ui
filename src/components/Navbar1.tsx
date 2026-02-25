@@ -45,8 +45,8 @@ export const Navbar1 = (props: Navbar1Props) => {
       className="border-border-primary fixed top-0 right-0 left-0 z-[999] flex w-full flex-col bg-white"
     >
       {showPromoBanner && (
-        <div className="w-full bg-orange-500 text-white">
-          <div className="flex h-14 w-full flex-col items-center justify-center gap-1 px-3 text-center sm:h-11 sm:flex-row sm:gap-3 sm:px-[5%]">
+        <div className="w-full border-b border-white/10 bg-[#050913] text-white">
+          <div className="flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-1.5 px-4 py-2 text-center sm:gap-x-4 sm:px-[5%] sm:py-2.5">
             <p className="text-xs font-semibold leading-tight sm:text-sm">
               ❤️‍🔥 Kurs Lovable dla designerów
             </p>
@@ -54,7 +54,7 @@ export const Navbar1 = (props: Navbar1Props) => {
               href="https://kurslovable.pl/?utm_source=vibehero&utm_medium=top_banner&utm_campaign=vibehero_landing&utm_content=navbar_kurs_lovable"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-white px-3 py-1 text-xs font-semibold text-orange-600 transition-colors hover:bg-orange-100"
+              className="inline-flex items-center justify-center rounded-full bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-[#050913] transition-colors hover:bg-blue-primary hover:text-white sm:px-3.5 sm:py-1.5 sm:text-xs"
             >
               Sprawdź
             </a>
@@ -63,7 +63,7 @@ export const Navbar1 = (props: Navbar1Props) => {
       )}
       <div className="w-full lg:px-[5%]">
         <div className="size-full lg:flex lg:items-center lg:justify-between">
-          <div className="flex min-h-16 items-center justify-between px-4 md:px-[5%] md:min-h-18 lg:min-h-full lg:px-0">
+          <div className="flex min-h-16 items-center justify-between px-4 md:px-[5%] md:min-h-18 lg:min-h-0 lg:px-0 lg:py-6">
             <a href={logo.url} onClick={closeMobileMenu}>
               <img src={logo.src} alt={logo.alt} className="max-h-5 md:max-h-6" />
             </a>
@@ -101,7 +101,7 @@ export const Navbar1 = (props: Navbar1Props) => {
             exit="close"
             animate={isMobileMenuOpen ? "open" : "close"}
             transition={{ duration: 0.4 }}
-            className="overflow-hidden px-4 md:px-[5%] lg:flex lg:items-center lg:px-0 lg:[--height-closed:auto] lg:[--height-open:auto]"
+            className="overflow-hidden px-4 md:px-[5%] lg:flex lg:items-center lg:px-0 lg:py-6 lg:[--height-closed:auto] lg:[--height-open:auto]"
           >
             {navLinks.map((navLink, index) =>
               navLink.subMenuLinks && navLink.subMenuLinks.length > 0 ? (
