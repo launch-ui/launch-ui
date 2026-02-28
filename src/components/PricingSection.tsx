@@ -46,7 +46,7 @@ const pricingOptions: PricingOption[] = [
 ];
 
 const features = [
-    "Cotygodniowe masterclassy na żywo (czwartki 19:00)",
+    "Cotygodniowe masterclassy na żywo (środy 19:00)",
     "Dostęp do archiwum wszystkich nagrań",
     "Forum z szybkimi odpowiedziami",
     "60+ osób, które budują obok Ciebie",
