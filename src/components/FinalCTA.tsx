@@ -30,6 +30,6 @@ export const FinalCTA = (props: Partial<Props>) => {
 
 export const FinalCTADefaults: Props = {
     heading: "Gotowy żeby przestać planować i zacząć działać?",
-    subheadline: "60+ osób już buduje swoje produkty z AI. Dołącz do nas.",
+    subheadline: "71 osób już buduje swoje produkty z AI. Dołącz do nas.",
     ctaText: "Wchodzę do Vibe Hero",
 };

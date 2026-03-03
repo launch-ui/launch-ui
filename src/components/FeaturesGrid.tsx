@@ -22,7 +22,7 @@ const features = [
         description: "Utknąłeś? Wrzuć pytanie. Potrzebujesz feedbacku? Pokaż screenshot. Ja i grupa odpowiadamy na bieżąco. Średni czas odpowiedzi: kilka godzin, nie dni."
     },
     {
-        title: "60+ osób w tej samej drodze",
+        title: "71 osób w tej samej drodze",
         description: "Nie jesteś sam. Widzisz co budują inni. Wymieniasz się doświadczeniami i łapiesz kontakty z ludźmi, którzy myślą i działają jak Ty."
     }
 ];

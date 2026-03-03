@@ -99,7 +99,7 @@ export const Layout25Defaults: Props = {
       description: "osób przeprowadzonych od pomysłu do MVP",
     },
     {
-      title: "47",
+      title: "71",
       description: "osób w społeczności, które budują razem ze mną",
     }
   ],

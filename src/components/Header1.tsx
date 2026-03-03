@@ -71,7 +71,7 @@ export const Header1Defaults: Props = {
   description:
     "Dołącz do osób, które na codzień zamieniają swoje pomysły w działające aplikacje za pomocą AI.",
   subtext:
-    "60+ osób w społeczności · LIVE w każdą środę · 5 warsztatów w archiwum",
+    "71 osób w społeczności · LIVE w każdą środę · 5 warsztatów w archiwum",
   image: {
     src: "/vibe-hero-heroimg.png",
     alt: "Vibe Hero illustration",

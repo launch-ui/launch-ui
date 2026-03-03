@@ -18,7 +18,7 @@ export default function HomePage() {
     <>
       <SEO
         title="Zamień pomysł w działającą apkę z pierwszymi userami"
-        description="Dołącz do społeczności i zacznij budować z AI dzięki codziennym coworkingom, sprintom i wsparciu 1:1. 20+ osób już na pokładzie."
+        description="Dołącz do społeczności i zacznij budować z AI dzięki codziennym coworkingom, sprintom i wsparciu 1:1. 71 osób już na pokładzie."
         url="https://vibehero.pl"
       />
       <Navbar1 showPromoBanner />

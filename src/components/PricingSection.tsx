@@ -49,7 +49,7 @@ const features = [
     "Cotygodniowe masterclassy na żywo (środy 19:00)",
     "Dostęp do archiwum wszystkich nagrań",
     "Forum z szybkimi odpowiedziami",
-    "60+ osób, które budują obok Ciebie",
+    "71 osób, które budują obok Ciebie",
     "Rezygnacja w każdej chwili",
     "Gwarancja 14 dni na pełny zwrot pieniędzy",
 ];
@@ -62,7 +62,7 @@ export const PricingSection = () => {
             <div className="container mx-auto max-w-[600px]">
                 <div className="mb-10 text-left md:mb-12 lg:mb-16">
                     <h2 className="font-heading mb-4 text-4xl font-bold md:text-5xl lg:text-6xl text-black">
-                        Dołącz do 60+ osób, które budują z AI
+                        Dołącz do 71 osób, które budują z AI
                     </h2>
                     <p className="text-lg text-gray-600 md:text-xl">
                         Wybierz co Ci pasuje. Zrezygnujesz kiedy chcesz.
