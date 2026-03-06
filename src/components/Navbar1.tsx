@@ -46,18 +46,34 @@ export const Navbar1 = (props: Navbar1Props) => {
     >
       {showPromoBanner && (
         <div className="w-full border-b border-white/10 bg-[#050913] text-white">
-          <div className="flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-1.5 px-4 py-2 text-center sm:gap-x-4 sm:px-[5%] sm:py-2.5">
-            <p className="text-xs font-semibold leading-tight sm:text-sm">
-              ❤️‍🔥 Kurs Lovable dla designerów
-            </p>
-            <a
-              href="https://kurslovable.pl/?utm_source=vibehero&utm_medium=top_banner&utm_campaign=vibehero_landing&utm_content=navbar_kurs_lovable"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-[#050913] transition-colors hover:bg-blue-primary hover:text-white sm:px-3.5 sm:py-1.5 sm:text-xs"
-            >
-              Sprawdź
-            </a>
+          <div className="flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-2 px-4 py-2 text-center sm:gap-x-4 sm:px-[5%] sm:py-2.5">
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5">
+              <p className="text-xs font-semibold leading-tight sm:text-sm">
+                ❤️‍🔥 Kurs Lovable dla designerów
+              </p>
+              <a
+                href="https://kurslovable.pl/?utm_source=vibehero&utm_medium=top_banner&utm_campaign=vibehero_landing&utm_content=navbar_kurs_lovable"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-[#050913] transition-colors hover:bg-blue-primary hover:text-white sm:px-3.5 sm:py-1.5 sm:text-xs"
+              >
+                Sprawdź
+              </a>
+            </div>
+            <span className="hidden h-5 w-px bg-white/30 sm:block" aria-hidden="true" />
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5">
+              <p className="text-xs font-semibold leading-tight sm:text-sm">
+                Zobaczmy się w Gdyni
+              </p>
+              <a
+                href="https://vibeconf.pl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full border border-[#32eca8] bg-[#32eca8] px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-black transition-colors hover:bg-[#29d595] sm:px-3.5 sm:py-1.5 sm:text-xs"
+              >
+                Vibe Conf (20 kwietnia)
+              </a>
+            </div>
           </div>
         </div>
       )}
