@@ -55,7 +55,7 @@ const features = [
 ];
 
 export const PricingSection = () => {
-    const [selectedCycle, setSelectedCycle] = useState<BillingCycle>("yearly");
+    const [selectedCycle, setSelectedCycle] = useState<BillingCycle>("monthly");
 
     return (
         <section id="pricing" className="bg-[#f6f6f6] px-[5%] py-16 md:py-24 lg:py-28">

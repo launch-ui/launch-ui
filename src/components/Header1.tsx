@@ -36,7 +36,7 @@ export const Header1 = (props: Header1Props) => {
               <div className="flex flex-wrap gap-4">
                 <a href="#pricing">
                   <Button className="bg-primary text-white hover:bg-primary/90 rounded-[3px] border-0 px-6 py-3">
-                    Dołącz do nas
+                    Dołącz do społeczności
                   </Button>
                 </a>
               </div>
@@ -67,11 +67,11 @@ export const Header1 = (props: Header1Props) => {
 };
 
 export const Header1Defaults: Props = {
-  heading: "Zamień pomysł w działającą apkę z pierwszymi userami",
+  heading: "Twórz strony, aplikacje i swoją przewagę z AI",
   description:
-    "Dołącz do osób, które na codzień zamieniają swoje pomysły w działające aplikacje za pomocą AI.",
+    "Dołącz do społeczności, w której uczysz się używać AI do realnych efektów: budowania stron i produktów, automatyzacji pracy i szybszego wdrażania pomysłów.",
   subtext:
-    "71 osób w społeczności · LIVE w każdą środę · 5 warsztatów w archiwum",
+    "71 osób w społeczności · LIVE w każdą środę · 13 nagrań warsztatów",
   image: {
     src: "/vibe-hero-heroimg.png",
     alt: "Vibe Hero illustration",
