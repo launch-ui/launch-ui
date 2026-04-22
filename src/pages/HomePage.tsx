@@ -21,8 +21,8 @@ export default function HomePage() {
         description="Dołącz do społeczności i zacznij budować z AI dzięki codziennym coworkingom, sprintom i wsparciu 1:1. 71 osób już na pokładzie."
         url="https://vibehero.pl"
       />
-      <Navbar1 showPromoBanner />
-      <main className="bg-white pt-[132px] text-black sm:pt-[118px] md:pt-[118px]">
+      <Navbar1 />
+      <main className="bg-white pt-16 text-black sm:pt-[72px] md:pt-[72px]">
         <Header1 />
         <Pricing10 />
         <SolutionSection />
