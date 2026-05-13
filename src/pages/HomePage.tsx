@@ -4,6 +4,7 @@ import { Pricing10 } from "../components/Pricing10";
 
 import { SolutionSection } from "../components/SolutionSection";
 import { FeaturesGrid } from "../components/FeaturesGrid";
+import { RecordedWorkshopsSection } from "../components/RecordedWorkshopsSection";
 import { CommunityPreviewSection } from "../components/CommunityPreviewSection";
 import { TestimonialsSection } from "../components/TestimonialsSection";
 import { Layout25 } from "../components/Layout25";
@@ -27,6 +28,7 @@ export default function HomePage() {
         <Pricing10 />
         <SolutionSection />
         <FeaturesGrid id="benefits" />
+        <RecordedWorkshopsSection />
         <CommunityPreviewSection />
         <TestimonialsSection id="testimonials" />
         <Layout25 id="about" />
