@@ -1,3 +1,5 @@
+"use client";
+
 import { type VariantProps } from "class-variance-authority";
 import { Menu } from "lucide-react";
 import { ReactNode } from "react";
@@ -13,7 +15,7 @@ import {
   NavbarRight,
 } from "../../ui/navbar";
 import Navigation from "../../ui/navigation";
-import { Sheet, SheetContent, SheetTrigger } from "../../ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../../ui/sheet";
 
 interface NavbarLink {
   text: string;
@@ -78,10 +80,10 @@ export default function Navbar({
             {showNavigation && (customNavigation || <Navigation />)}
           </NavbarLeft>
           <NavbarRight>
-            {actions.map((action, index) =>
+            {actions.map((action) =>
               action.isButton ? (
                 <Button
-                  key={index}
+                  key={`${action.href}-${action.text}`}
                   variant={action.variant || "default"}
                   asChild
                 >
@@ -93,7 +95,7 @@ export default function Navbar({
                 </Button>
               ) : (
                 <a
-                  key={index}
+                  key={`${action.href}-${action.text}`}
                   href={action.href}
                   className="hidden text-sm md:block"
                 >
@@ -113,6 +115,7 @@ export default function Navbar({
                 </Button>
               </SheetTrigger>
               <SheetContent side="right">
+                <SheetTitle className="sr-only">Navigation menu</SheetTitle>
                 <nav className="grid gap-6 text-lg font-medium">
                   <a
                     href={homeUrl}
@@ -120,9 +123,9 @@ export default function Navbar({
                   >
                     <span>{name}</span>
                   </a>
-                  {mobileLinks.map((link, index) => (
+                  {mobileLinks.map((link) => (
                     <a
-                      key={index}
+                      key={`${link.href}-${link.text}`}
                       href={link.href}
                       className="text-muted-foreground hover:text-foreground"
                     >

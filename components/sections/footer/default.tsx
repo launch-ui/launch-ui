@@ -56,11 +56,11 @@ export default function FooterSection({
       links: [
         { text: "Discord", href: siteConfig.url },
         { text: "Twitter", href: siteConfig.url },
-        { text: "Github", href: siteConfig.links.github },
+        { text: "GitHub", href: siteConfig.links.github },
       ],
     },
   ],
-  copyright = "© 2025 Mikołaj Dobrucki. All rights reserved",
+  copyright = "© 2026 Mikołaj Dobrucki. All rights reserved",
   policies = [
     { text: "Privacy Policy", href: siteConfig.url },
     { text: "Terms of Service", href: siteConfig.url },
@@ -79,12 +79,12 @@ export default function FooterSection({
                 <h3 className="text-xl font-bold">{name}</h3>
               </div>
             </FooterColumn>
-            {columns.map((column, index) => (
-              <FooterColumn key={index}>
+            {columns.map((column) => (
+              <FooterColumn key={column.title}>
                 <h3 className="text-md pt-1 font-semibold">{column.title}</h3>
-                {column.links.map((link, linkIndex) => (
+                {column.links.map((link) => (
                   <a
-                    key={linkIndex}
+                    key={`${link.href}-${link.text}`}
                     href={link.href}
                     className="text-muted-foreground text-sm"
                   >
@@ -97,8 +97,8 @@ export default function FooterSection({
           <FooterBottom>
             <div>{copyright}</div>
             <div className="flex items-center gap-4">
-              {policies.map((policy, index) => (
-                <a key={index} href={policy.href}>
+              {policies.map((policy) => (
+                <a key={`${policy.href}-${policy.text}`} href={policy.href}>
                   {policy.text}
                 </a>
               ))}

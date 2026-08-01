@@ -48,4 +48,4 @@ function ItemIcon({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-export { Item, ItemDescription,ItemIcon, ItemTitle };
+export { Item, ItemDescription, ItemIcon, ItemTitle };

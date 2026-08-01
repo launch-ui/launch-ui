@@ -23,7 +23,8 @@ const beamVariants = cva(
 );
 
 export interface BeamProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof beamVariants> {}
 
 function Beam({ className, tone, ...props }: BeamProps) {

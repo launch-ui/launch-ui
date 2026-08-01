@@ -14,31 +14,37 @@ interface StatsProps {
   className?: string;
 }
 
+function formatToThousands(value: number) {
+  return Math.round(value / 100) / 10;
+}
+
+const DEFAULT_STATS: StatItemProps[] = [
+  {
+    label: "used by",
+    value: formatToThousands(siteConfig.stats.figma),
+    suffix: "k",
+    description: "designers on Figma Community",
+  },
+  {
+    label: "over",
+    value: siteConfig.stats.github,
+    description: "clones and forks of the template on GitHub",
+  },
+  {
+    label: "already",
+    value: formatToThousands(siteConfig.stats.cli),
+    suffix: "k",
+    description: "installations with shadcn/ui CLI",
+  },
+  {
+    label: "includes",
+    value: siteConfig.stats.sections,
+    description: "blocks and sections",
+  },
+];
+
 export default function Stats({
-  items = [
-    {
-      label: "used by",
-      value: Math.round(siteConfig.stats.figma / 100) / 10,
-      suffix: "k",
-      description: "designers on Figma Community",
-    },
-    {
-      label: "over",
-      value: siteConfig.stats.github,
-      description: "clones and forks of the template on Github",
-    },
-    {
-      label: "already",
-      value: Math.round(siteConfig.stats.cli / 100) / 10,
-      suffix: "k",
-      description: "installations with shadcn/ui CLI",
-    },
-    {
-      label: "includes",
-      value: siteConfig.stats.sections,
-      description: "blocks and sections",
-    },
-  ],
+  items = DEFAULT_STATS,
   className,
 }: StatsProps) {
   return (
@@ -46,9 +52,9 @@ export default function Stats({
       <div className="container mx-auto max-w-[960px]">
         {items !== false && items.length > 0 && (
           <div className="grid grid-cols-2 gap-12 sm:grid-cols-4">
-            {items.map((item, index) => (
+            {items.map((item) => (
               <div
-                key={index}
+                key={`${item.label}-${item.description}`}
                 className="flex flex-col items-start gap-3 text-left"
               >
                 {item.label && (

@@ -58,42 +58,42 @@ export default function Navigation({
     {
       title: "Documentation",
       isLink: true,
-      href: siteConfig.url,
+      href: siteConfig.getStartedUrl,
     },
   ],
   components = [
     {
       title: "Alert Dialog",
-      href: "/docs/primitives/alert-dialog",
+      href: `${siteConfig.url}/docs/primitives/alert-dialog`,
       description:
         "A modal dialog that interrupts the user with important content and expects a response.",
     },
     {
       title: "Hover Card",
-      href: "/docs/primitives/hover-card",
+      href: `${siteConfig.url}/docs/primitives/hover-card`,
       description:
         "For sighted users to preview content available behind a link.",
     },
     {
       title: "Progress",
-      href: "/docs/primitives/progress",
+      href: `${siteConfig.url}/docs/primitives/progress`,
       description:
         "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
     },
     {
-      title: "Scroll-area",
-      href: "/docs/primitives/scroll-area",
-      description: "Visually or semantically separates content.",
+      title: "Scroll Area",
+      href: `${siteConfig.url}/docs/primitives/scroll-area`,
+      description: "A scrollable container with custom scrollbars.",
     },
     {
       title: "Tabs",
-      href: "/docs/primitives/tabs",
+      href: `${siteConfig.url}/docs/primitives/tabs`,
       description:
-        "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+        "A set of layered sections of content, known as tab panels, that are displayed one at a time.",
     },
     {
       title: "Tooltip",
-      href: "/docs/primitives/tooltip",
+      href: `${siteConfig.url}/docs/primitives/tooltip`,
       description:
         "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
     },
@@ -101,31 +101,30 @@ export default function Navigation({
   logo = <LaunchUI />,
   logoTitle = "Launch UI",
   logoDescription = "Landing page template built with React, Shadcn/ui and Tailwind that you can copy/paste into your project.",
-  logoHref = siteConfig.url,
+  logoHref = siteConfig.getStartedUrl,
   introItems = [
     {
       title: "Introduction",
-      href: siteConfig.url,
-      description:
-        "Re-usable components built using Radix UI and Tailwind CSS.",
+      href: siteConfig.getStartedUrl,
+      description: "Reusable components built using Radix UI and Tailwind CSS.",
     },
     {
       title: "Installation",
-      href: siteConfig.url,
+      href: siteConfig.getStartedUrl,
       description: "How to install dependencies and structure your app.",
     },
     {
       title: "Typography",
-      href: siteConfig.url,
-      description: "Styles for headings, paragraphs, lists...etc",
+      href: siteConfig.getStartedUrl,
+      description: "Styles for headings, paragraphs, and lists.",
     },
   ],
 }: NavigationProps) {
   return (
     <NavigationMenu className="hidden md:flex">
       <NavigationMenuList>
-        {menuItems.map((item, index) => (
-          <NavigationMenuItem key={index}>
+        {menuItems.map((item) => (
+          <NavigationMenuItem key={item.title}>
             {item.isLink ? (
               <NavigationMenuLink
                 className={navigationMenuTriggerStyle()}
@@ -155,8 +154,12 @@ export default function Navigation({
                           </a>
                         </NavigationMenuLink>
                       </li>
-                      {introItems.map((intro, i) => (
-                        <ListItem key={i} href={intro.href} title={intro.title}>
+                      {introItems.map((intro) => (
+                        <ListItem
+                          key={intro.title}
+                          href={intro.href}
+                          title={intro.title}
+                        >
                           {intro.description}
                         </ListItem>
                       ))}

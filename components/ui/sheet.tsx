@@ -6,6 +6,20 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+function sheetContentHasAccessibleTitle(node: React.ReactNode): boolean {
+  return React.Children.toArray(node).some((child) => {
+    if (!React.isValidElement(child)) return false;
+    if (child.type === SheetPrimitive.Title || child.type === SheetTitle) {
+      return true;
+    }
+    const nested = (child.props as { children?: React.ReactNode }).children;
+    if (nested != null) {
+      return sheetContentHasAccessibleTitle(nested);
+    }
+    return false;
+  });
+}
+
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />;
 }
@@ -71,6 +85,9 @@ function SheetContent({
         )}
         {...props}
       >
+        {!sheetContentHasAccessibleTitle(children) && (
+          <SheetPrimitive.Title className="sr-only">Menu</SheetPrimitive.Title>
+        )}
         {children}
         <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-6 right-6 z-[100] rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
           <XIcon className="size-5" />

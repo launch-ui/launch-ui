@@ -28,7 +28,7 @@ export default function FAQ({
   items = [
     {
       question:
-        "Why building a great landing page is critical for your business?",
+        "Why is building a great landing page critical for your business?",
       answer: (
         <>
           <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
@@ -66,7 +66,7 @@ export default function FAQ({
     },
     {
       question:
-        "How Launch UI is different from other components libraries and templates?",
+        "How is Launch UI different from other component libraries and templates?",
       answer: (
         <>
           <p className="text-muted-foreground mb-4 max-w-[580px]">
@@ -86,7 +86,7 @@ export default function FAQ({
       ),
     },
     {
-      question: 'Why exactly does it mean that "The code is yours"?',
+      question: 'What exactly does it mean that "The code is yours"?',
       answer: (
         <>
           <p className="text-muted-foreground mb-4 max-w-[580px]">
@@ -101,7 +101,10 @@ export default function FAQ({
           </p>
           <p className="text-muted-foreground mb-4 max-w-[580px]">
             For complete details about licensing and usage rights, check out{" "}
-            <Link href="/pricing" className="text-foreground underline">
+            <Link
+              href={`${siteConfig.url}/pricing`}
+              className="text-foreground underline"
+            >
               the pricing page
             </Link>
             .
@@ -129,7 +132,7 @@ export default function FAQ({
       answer: (
         <>
           <p className="text-muted-foreground mb-4 max-w-[580px]">
-            Actually, yes! I&apos;m always acively looking for beta testers of
+            Actually, yes! I&apos;m always actively looking for beta testers of
             new features. If you are interested in exchanging feedback for a
             discount, please contact me via{" "}
             <a
@@ -156,7 +159,7 @@ export default function FAQ({
           <Accordion type="single" collapsible className="w-full max-w-[800px]">
             {items.map((item, index) => (
               <AccordionItem
-                key={index}
+                key={item.value ?? item.question}
                 value={item.value || `item-${index + 1}`}
               >
                 <AccordionTrigger>{item.question}</AccordionTrigger>

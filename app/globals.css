@@ -6,6 +6,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
+  /* Colors */
   --color-brand: var(--brand);
   --color-brand-foreground: var(--brand-foreground);
   --color-light: var(--light);
@@ -43,29 +44,34 @@
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
 
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-ibm-plex-mono);
-
+  /* Radius */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
 
+  /* Spacing */
   --spacing-container: 1280px;
   --spacing-container-lg: 1536px;
 
+  /* Shadows */
   --shadow-md: 0 4px 6px -1px var(--shadow), 0 2px 4px -2px var(--shadow);
   --shadow-xl: 0 20px 25px -5px var(--shadow), 0 8px 10px -6px var(--shadow);
   --shadow-2xl: 0 25px 50px -12px var(--shadow);
   --shadow-mockup: -12px 16px 48px var(--shadow-strong);
 
+  /* Separators */
   --line-width: 1px;
 
+  /* Animations */
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-appear: appear 0.6s forwards ease-out;
   --animate-appear-zoom: appear-zoom 0.6s forwards ease-out;
+
+  /* Breakpoints */
+  --breakpoint-xs: 30rem;
 
   @keyframes accordion-down {
     from {

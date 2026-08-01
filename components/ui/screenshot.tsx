@@ -1,8 +1,4 @@
-"use client";
-
-import Image from "next/image";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import Image, { type ImageProps } from "next/image";
 
 import { cn } from "@/lib/utils";
 
@@ -12,6 +8,7 @@ interface ScreenshotProps {
   alt: string;
   width: number;
   height: number;
+  loading?: ImageProps["loading"];
   className?: string;
 }
 
@@ -21,34 +18,43 @@ export default function Screenshot({
   alt,
   width,
   height,
+  loading,
   className,
 }: ScreenshotProps) {
-  const { resolvedTheme } = useTheme();
-  const [src, setSrc] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (resolvedTheme) {
-      setSrc(resolvedTheme === "light" ? srcLight : srcDark || srcLight);
-    }
-  }, [resolvedTheme, srcLight, srcDark]);
-
-  if (!src) {
+  if (!srcDark) {
     return (
-      <div
-        style={{ width, height }}
-        className={cn("bg-muted", className)}
-        aria-label={alt}
+      <Image
+        src={srcLight}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={loading}
+        className={className}
+        unoptimized={srcLight.endsWith(".svg")}
       />
     );
   }
 
   return (
-    <Image
-      src={src}
-      alt={alt}
-      width={width}
-      height={height}
-      className={className}
-    />
+    <>
+      <Image
+        src={srcLight}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={loading}
+        className={cn(className, "block dark:hidden")}
+        unoptimized={srcLight.endsWith(".svg")}
+      />
+      <Image
+        src={srcDark}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={loading}
+        className={cn(className, "hidden dark:block")}
+        unoptimized={srcDark.endsWith(".svg")}
+      />
+    </>
   );
 }

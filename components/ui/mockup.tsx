@@ -19,7 +19,8 @@ const mockupVariants = cva(
 );
 
 export interface MockupProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof mockupVariants> {}
 
 function Mockup({ className, type, ...props }: MockupProps) {
@@ -48,7 +49,8 @@ const frameVariants = cva(
 );
 
 export interface MockupFrameProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof frameVariants> {}
 
 function MockupFrame({ className, size, ...props }: MockupFrameProps) {

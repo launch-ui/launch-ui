@@ -13,7 +13,7 @@ const pricingColumnVariants = cva(
     variants: {
       variant: {
         default: "glass-1 to-transparent dark:glass-3",
-        glow: "glass-2 to-trasparent dark:glass-3 after:content-[''] after:absolute after:-top-[128px] after:left-1/2 after:h-[128px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:rounded-[50%] dark:after:bg-foreground/30 after:blur-[72px]",
+        glow: "glass-2 to-transparent dark:glass-3 after:content-[''] after:absolute after:-top-[128px] after:left-1/2 after:h-[128px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:rounded-[50%] dark:after:bg-foreground/30 after:blur-[72px]",
         "glow-brand":
           "glass-3 from-card/100 to-card/100 dark:glass-4 after:content-[''] after:absolute after:-top-[128px] after:left-1/2 after:h-[128px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:rounded-[50%] after:bg-brand-foreground/70 after:blur-[72px]",
       },
@@ -25,7 +25,8 @@ const pricingColumnVariants = cva(
 );
 
 export interface PricingColumnProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof pricingColumnVariants> {
   name: string;
   icon?: ReactNode;
@@ -127,8 +128,11 @@ export function PricingColumn({
       </div>
       <div>
         <ul className="flex flex-col gap-2">
-          {features.map((feature) => (
-            <li key={feature} className="flex items-center gap-2 text-sm">
+          {features.map((feature, index) => (
+            <li
+              key={`${feature}-${index}`}
+              className="flex items-center gap-2 text-sm"
+            >
               <CircleCheckBig className="text-muted-foreground size-4 shrink-0" />
               {feature}
             </li>

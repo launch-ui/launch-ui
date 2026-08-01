@@ -1,4 +1,3 @@
-import { type VariantProps } from "class-variance-authority";
 import { ArrowRightIcon } from "lucide-react";
 import { ReactNode } from "react";
 
@@ -7,18 +6,14 @@ import { cn } from "@/lib/utils";
 
 import Github from "../../logos/github";
 import { Badge } from "../../ui/badge";
-import { Button, buttonVariants } from "../../ui/button";
 import Glow from "../../ui/glow";
+import { LinkButton, type LinkButtonProps } from "../../ui/link-button";
 import { Mockup, MockupFrame } from "../../ui/mockup";
 import Screenshot from "../../ui/screenshot";
 import { Section } from "../../ui/section";
 
-interface HeroButtonProps {
-  href: string;
+interface HeroButtonProps extends Omit<LinkButtonProps, "children"> {
   text: string;
-  variant?: VariantProps<typeof buttonVariants>["variant"];
-  icon?: ReactNode;
-  iconRight?: ReactNode;
 }
 
 interface HeroProps {
@@ -30,43 +25,50 @@ interface HeroProps {
   className?: string;
 }
 
+const DEFAULT_HERO_BUTTONS: HeroButtonProps[] = [
+  {
+    href: siteConfig.getStartedUrl,
+    text: "Get Started",
+    variant: "default",
+  },
+  {
+    href: siteConfig.links.github,
+    text: "GitHub",
+    variant: "glow",
+    icon: <Github className="mr-2 size-4" />,
+  },
+];
+
+const DEFAULT_HERO_BADGE = (
+  <Badge variant="outline" className="animate-appear">
+    <span className="text-muted-foreground">
+      New version of Launch UI is out!
+    </span>
+    <a href={siteConfig.getStartedUrl} className="flex items-center gap-1">
+      Get started
+      <ArrowRightIcon className="size-3" />
+    </a>
+  </Badge>
+);
+
+const DEFAULT_HERO_MOCKUP = (
+  <Screenshot
+    srcLight="/dashboard-light.png"
+    srcDark="/dashboard-dark.png"
+    alt="Launch UI app screenshot"
+    width={1248}
+    height={765}
+    loading="eager"
+    className="w-full"
+  />
+);
+
 export default function Hero({
   title = "Give your big idea the design it deserves",
   description = "Professionally designed blocks and templates built with React, Shadcn/ui and Tailwind that will help your product stand out.",
-  mockup = (
-    <Screenshot
-      srcLight="/dashboard-light.png"
-      srcDark="/dashboard-dark.png"
-      alt="Launch UI app screenshot"
-      width={1248}
-      height={765}
-      className="w-full"
-    />
-  ),
-  badge = (
-    <Badge variant="outline" className="animate-appear">
-      <span className="text-muted-foreground">
-        New version of Launch UI is out!
-      </span>
-      <a href={siteConfig.getStartedUrl} className="flex items-center gap-1">
-        Get started
-        <ArrowRightIcon className="size-3" />
-      </a>
-    </Badge>
-  ),
-  buttons = [
-    {
-      href: siteConfig.getStartedUrl,
-      text: "Get Started",
-      variant: "default",
-    },
-    {
-      href: siteConfig.links.github,
-      text: "Github",
-      variant: "glow",
-      icon: <Github className="mr-2 size-4" />,
-    },
-  ],
+  mockup = DEFAULT_HERO_MOCKUP,
+  badge = DEFAULT_HERO_BADGE,
+  buttons = DEFAULT_HERO_BUTTONS,
   className,
 }: HeroProps) {
   return (
@@ -87,19 +89,17 @@ export default function Hero({
           </p>
           {buttons !== false && buttons.length > 0 && (
             <div className="animate-appear relative z-10 flex justify-center gap-4 opacity-0 delay-300">
-              {buttons.map((button, index) => (
-                <Button
-                  key={index}
+              {buttons.map((button) => (
+                <LinkButton
+                  key={`${button.href}-${button.text}`}
                   variant={button.variant || "default"}
                   size="lg"
-                  asChild
+                  href={button.href}
+                  icon={button.icon}
+                  iconRight={button.iconRight}
                 >
-                  <a href={button.href}>
-                    {button.icon}
-                    {button.text}
-                    {button.iconRight}
-                  </a>
-                </Button>
+                  {button.text}
+                </LinkButton>
               ))}
             </div>
           )}

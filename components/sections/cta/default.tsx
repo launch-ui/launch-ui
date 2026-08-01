@@ -1,19 +1,12 @@
-import { type VariantProps } from "class-variance-authority";
-import { ReactNode } from "react";
-
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import { Button, buttonVariants } from "../../ui/button";
 import Glow from "../../ui/glow";
+import { LinkButton, type LinkButtonProps } from "../../ui/link-button";
 import { Section } from "../../ui/section";
 
-interface CTAButtonProps {
-  href: string;
+interface CTAButtonProps extends Omit<LinkButtonProps, "children"> {
   text: string;
-  variant?: VariantProps<typeof buttonVariants>["variant"];
-  icon?: ReactNode;
-  iconRight?: ReactNode;
 }
 
 interface CTAProps {
@@ -22,15 +15,17 @@ interface CTAProps {
   className?: string;
 }
 
+const DEFAULT_CTA_BUTTONS: CTAButtonProps[] = [
+  {
+    href: siteConfig.getStartedUrl,
+    text: "Get Started",
+    variant: "default",
+  },
+];
+
 export default function CTA({
   title = "Start building",
-  buttons = [
-    {
-      href: siteConfig.getStartedUrl,
-      text: "Get Started",
-      variant: "default",
-    },
-  ],
+  buttons = DEFAULT_CTA_BUTTONS,
   className,
 }: CTAProps) {
   return (
@@ -41,19 +36,17 @@ export default function CTA({
         </h2>
         {buttons !== false && buttons.length > 0 && (
           <div className="flex justify-center gap-4">
-            {buttons.map((button, index) => (
-              <Button
-                key={index}
+            {buttons.map((button) => (
+              <LinkButton
+                key={`${button.href}-${button.text}`}
                 variant={button.variant || "default"}
                 size="lg"
-                asChild
+                href={button.href}
+                icon={button.icon}
+                iconRight={button.iconRight}
               >
-                <a href={button.href}>
-                  {button.icon}
-                  {button.text}
-                  {button.iconRight}
-                </a>
-              </Button>
+                {button.text}
+              </LinkButton>
             ))}
           </div>
         )}
