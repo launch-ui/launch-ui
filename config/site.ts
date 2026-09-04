@@ -6,7 +6,7 @@ export const siteConfig = {
   ogImage: "https://launchuicomponents.com/og.jpg",
   description:
     "Landing page components built with React, Shadcn/ui and Tailwind that will make your website feel premium.",
-  version: "v2.10",
+  version: "v2.10.1",
   links: {
     twitter: "https://twitter.com/mikolajdobrucki",
     github: "https://github.com/launch-ui/launch-ui",
