@@ -31,7 +31,7 @@ export default function Logos({
       key="react"
       image={React}
       name="React"
-      version="19.2.8"
+      version="19.3.1"
       badge="New"
     />,
     <Logo
@@ -50,7 +50,7 @@ export default function Logos({
       key="tailwind"
       image={Tailwind}
       name="Tailwind"
-      version="4.3.3"
+      version="4.3.4"
       badge="New"
     />,
   ],

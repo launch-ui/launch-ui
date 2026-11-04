@@ -6,7 +6,7 @@ export const siteConfig = {
   ogImage: "https://launchuicomponents.com/og.jpg",
   description:
     "Landing page components built with React, Shadcn/ui and Tailwind that will make your website feel premium.",
-  version: "v2.10.1",
+  version: "v2.10.2",
   links: {
     twitter: "https://twitter.com/mikolajdobrucki",
     github: "https://github.com/launch-ui/launch-ui",
@@ -17,11 +17,11 @@ export const siteConfig = {
     team: "https://launchui.lemonsqueezy.com/buy/130d8cfe-e123-464b-9f67-c74c5fedfb45",
   },
   stats: {
-    figma: 23472,
-    github: 2701,
-    cli: 28178,
-    total: "54.4k+",
-    updated: "4 Sep 2026",
+    figma: 26327,
+    github: 7022,
+    cli: 40580,
+    total: "73.9k+",
+    updated: "4 Nov 2026",
     sections: 74,
     illustrations: 23,
     animations: 15,
